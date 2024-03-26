@@ -6,7 +6,7 @@ import { HeroParallaxSection } from "./components/custom/HeroParallax";
 
 export default function Home() {
   return (
-    <main className="min-h-screen antialiased">
+    <main className="min-h-screen antialiased ">
       <HeroSection />
       <IpadSection />
       <HeroParallaxSection />
