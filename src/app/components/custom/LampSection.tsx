@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { LampContainer } from "../ui/lamp";
 import Link from "next/link";
 
-export function LampSection() {
+export default function LampSection() {
   return (
     <LampContainer>
       <motion.h1

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Spotlight } from "@/app/components/ui/Spotlight";
+import { Spotlight } from "../ui/Spotlight";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 
 const HeroSection = () => {

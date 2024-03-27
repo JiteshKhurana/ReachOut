@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 
 import {
   NavigationMenu,
@@ -14,21 +13,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
+} from "../../../components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "../../../components/ui/navigation-menu";
+import { cn } from "../../../lib/utils";
 import React from "react";
-
-const components: { title: string; href: string; description?: string }[] = [
-  {
-    title: "User Profile",
-    href: "/profile",
-  },
-  {
-    title: "Logout",
-    href: "/api/auth/logout",
-  },
-];
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -58,8 +46,10 @@ ListItem.displayName = "ListItem";
 
 const Navbar = () => {
   const { user, error, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading.....</div>;
   if (error) return <div>{error.message}</div>;
+  console.log(user);
+
   return (
     <>
       <div className="l-0 r-0 z-50 sticky top-0 md:top-4 m-auto md:mt-4 flex max-md:w-full w-[80%] justify-between items-center md:rounded-lg border border-[#343434] bg-[#0a0a0a] bg-opacity-50 max-md:px-4  px-10 py-3 text-xl backdrop-blur-lg backdrop-filter">
@@ -88,14 +78,14 @@ const Navbar = () => {
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/ride" title="Ride Sharing">
+                  <ListItem href="/ride-sharing" title="Ride Sharing">
                     Ride Together, Save Together - Shared Journeys, Shared
                     Savings
                   </ListItem>
-                  <ListItem href="/interview" title="Mock Interview">
+                  <ListItem href="/mock-interview" title="Mock Interview">
                     Practice Makes Perfect - Ace Your Interviews with Peer Power
                   </ListItem>
-                  <ListItem href="/team" title="Hackathon Peers">
+                  <ListItem href="/hackathon-peers" title="Hackathon Peers">
                     Team Up to Triumph - Hackathons Made Hassle-Free
                   </ListItem>
                 </ul>
@@ -103,14 +93,19 @@ const Navbar = () => {
             </NavigationMenuItem>
             {user ? (
               <NavigationMenuItem>
-                <Link href="/user" legacyBehavior passHref>
+                <Link
+                  href={{
+                    pathname: "/" + user?.nickname,
+                  }}
+                  legacyBehavior
+                  passHref
+                >
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Hi {user?.name}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
             ) : (
-              // <a href="/api/auth/logout">Logout</a>
               <Button asChild>
                 <a href="/api/auth/login">Sign in</a>
               </Button>
