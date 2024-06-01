@@ -18,13 +18,11 @@ export default function HeroHighlightSection() {
           duration: 0.5,
           ease: [0.4, 0.0, 0.2, 1],
         }}
-        className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
+        className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold  text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto"
       >
-        With insomnia, nothing&apos;s real. Everything is far away. Everything
-        is a{" "}
-        <Highlight className="text-white">
-          copy, of a copy, of a copy.
-        </Highlight>
+        Travel smarter with ReachOut: Connect with fellow students to {""}
+        <Highlight className="text-white">carpool and save</Highlight> on travel
+        expenses.
       </motion.h1>
     </HeroHighlight>
   );
