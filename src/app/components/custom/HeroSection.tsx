@@ -19,13 +19,13 @@ const HeroSection = () => {
           ReachOut is an innovative web platform designed to streamline the way
           students connect for shared transportation and collaborative events.
         </p>
-        <div className="mt-8 m-40 flex justify-center text-center">
+        <div className="m-24 flex justify-center text-center">
           <HoverBorderGradient
             containerClassName="rounded-full"
             as="button"
-            className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+            className="bg-black text-white flex items-center space-x-2"
           >
-            <span>Get Started</span>
+            Get Started
           </HoverBorderGradient>
         </div>
       </div>

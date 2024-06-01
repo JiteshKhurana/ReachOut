@@ -1,16 +1,20 @@
 import HeroSection from "./components/custom/HeroSection";
 import LampSection from "./components/custom/LampSection";
+import FlipWordsSection from "./components/custom/FlipWordsSection";
 import IpadSection from "./components/custom/IpadSection";
-import HeroParallaxSection from "./components/custom/HeroParallax";
-import GlobeSection from "./components/custom/GlobeSection";
+import BentoGridSection from "./components/custom/BentoGridSection";
+import HeroHighlightSection from "./components/custom/HeroHighlightSection";
+import WobbleCardSection from "./components/custom/WobbleCardSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen antialiased ">
+    <main className="min-h-screen antialiased bg-black">
       <HeroSection />
+      <FlipWordsSection />
       <IpadSection />
-      <HeroParallaxSection />
-      <GlobeSection />
+      <WobbleCardSection />
+      <BentoGridSection />
+      <HeroHighlightSection />
       <LampSection />
     </main>
   );

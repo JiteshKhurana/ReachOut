@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { dark, neobrutalism, shadesOfPurple } from "@clerk/themes";
 import Nav from "./components/custom/Nav";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { cn } from "../lib/utils";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -21,18 +27,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <UserProvider>
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
+    <ClerkProvider
+      appearance={{
+        baseTheme: [dark, neobrutalism],
+        variables: { colorPrimary: "#FF5C5B" },
+      }}
+    >
+      <html lang="en">
+        <body className="bg-black">
           <Nav />
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           {children}
         </body>
-      </UserProvider>
-    </html>
+      </html>
+    </ClerkProvider>
   );
 }
