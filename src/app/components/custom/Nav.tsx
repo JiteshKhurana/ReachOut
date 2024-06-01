@@ -1,44 +1,57 @@
 "use client";
-import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
+import Link from "next/link";
+
+import { NavigationMenuLink } from "@/app/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import React from "react";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-export default function Nav() {
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
   return (
-    <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-2" />
-    </div>
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
   );
-}
+});
+ListItem.displayName = "ListItem";
 
-function Navbar({ className }: { className?: string }) {
-  const [active, setActive] = useState<string | null>(null);
+const Navbar = () => {
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
-    >
-      <Menu setActive={setActive}>
-        {/* <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Ride Sharing</HoveredLink>
-          </div>
-        </MenuItem> */}
-        <MenuItem setActive={setActive} active={active} item="Features">
-          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-            <ProductItem
-              title="Share Ride"
-              href="https://algochurn.com"
-              src="https://assets.aceternity.com/demos/algochurn.webp"
-              description="Save Fare, Save Time"
-            />
-          </div>
-        </MenuItem>
-        <MenuItem
-          setActive={setActive}
-          active={active}
-          item="Pricing"
-        ></MenuItem>
-      </Menu>
-    </div>
+    <>
+      <div className="l-0 r-0 z-50 sticky top-0 md:top-4 m-auto md:mt-4 flex max-md:w-full w-[80%] justify-between items-center md:rounded-lg border border-[#343434] bg-[#0a0a0a] bg-opacity-50 max-md:px-4  px-10 py-3 text-xl backdrop-blur-lg backdrop-filter">
+        <Link href="/" className="text-2xl cursor-pointer text-white">
+          ReachOut
+        </Link>
+        <div className="space-x-5 flex flex-row text-white text-md">
+          <Link href={"/ride-sharing"}>Ride Sharing</Link>
+          <Link href={"/pricing"}>Pricing</Link>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
+      </div>
+    </>
   );
-}
+};
+
+export default Navbar;

@@ -1,5 +1,5 @@
 import HeroSection from "./components/custom/HeroSection";
-import LampSection from "./components/custom/LampSection";
+import WaitList from "./components/custom/WaitList";
 import FlipWordsSection from "./components/custom/FlipWordsSection";
 import IpadSection from "./components/custom/IpadSection";
 import BentoGridSection from "./components/custom/BentoGridSection";
@@ -13,9 +13,9 @@ export default function Home() {
       <FlipWordsSection />
       <IpadSection />
       <WobbleCardSection />
-      <BentoGridSection />
       <HeroHighlightSection />
-      <LampSection />
+      <BentoGridSection />
+      <WaitList />
     </main>
   );
 }

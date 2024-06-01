@@ -121,6 +121,9 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
+  addBase({
+    ":root": newVars,
+  });
 }
 
 function hero({ matchUtilities, theme }: any) {
