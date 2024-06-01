@@ -19,13 +19,6 @@ export default function WobbleCardSection() {
             your travel more affordable and enjoyable.
           </p>
         </div>
-        <Image
-          src="/ride-sharing.webp"
-          width={500}
-          height={500}
-          alt="ride sharing image"
-          className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
-        />
       </WobbleCard>
       <WobbleCard containerClassName="col-span-1 min-h-[300px]">
         <h2 className="max-w-80 text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
@@ -46,13 +39,6 @@ export default function WobbleCardSection() {
             with your university peers.
           </p>
         </div>
-        <Image
-          src="/join-today.webp"
-          width={500}
-          height={500}
-          alt="join today image"
-          className="absolute -right-10 md:-right-[40%] lg:-right-[20%] -bottom-10 object-contain rounded-2xl"
-        />
       </WobbleCard>
     </div>
   );
