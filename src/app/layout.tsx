@@ -28,7 +28,7 @@ export default function RootLayout({
       }}
     >
       <html lang="en">
-        <body className="bg-black">
+        <body className="bg-background dark">
           <Navbar />
           {children}
         </body>

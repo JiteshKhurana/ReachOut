@@ -1,7 +1,8 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
 
-const page = () => {
-  return <div>ride</div>;
+const RideSharing = () => {
+  return <Button>Click me</Button>;
 };
 
-export default page;
+export default RideSharing;
